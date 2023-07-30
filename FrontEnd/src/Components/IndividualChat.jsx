@@ -11,15 +11,16 @@ const {Id1,Id2}=userAuth;
 const socket=io("http://localhost:3035/",{transports:["websocket","polling"]});
 
 useEffect(()=>{
-
-
+    socket.emit("show",{Id1,Id2});
     socket.on(Id1+Id2,(msg)=>{
+        console.log(msg)
         let {err}=msg;
     if(err){
-        setArr([])
+        setArr([]);
     }
     else{
-        setArr(msg.Chat);
+        // setArr(msg.Chat);
+        // console.log(msg.Chat);
     }
     
     })
@@ -27,7 +28,7 @@ useEffect(()=>{
     return ()=>{
         // socket.disconnect();
     }
-},)
+},[])
 
 function send(){
     if(Id1,Id2,Message)
@@ -47,7 +48,14 @@ console.log(userAuth);
         <h3>Sender: {userAuth.Id1}</h3>
         <h4>Receiver: {userAuth.Id2}</h4>
        <input type='text' placeholder='Enter your message' onChange={(e)=>setMessage(e.target.value)}/>
-       <button>Send</button>
+       <button onClick={send}>Send</button>
+       <div>
+        {arr.length===0?<h4>Not Any Message Yet</h4>:<>
+        {arr.map((el,i)=>{
+            <h5>{el}</h5>
+        })}
+        </>}
+       </div>
     </div>
   )
 }
