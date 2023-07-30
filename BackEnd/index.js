@@ -59,11 +59,11 @@ io.on("connection",(socket)=>{
       socket.emit(Id1+Id2,{err:true});
     }
     else{
-    let arr=userChat.Chat;
+    let Chat=userChat.Chat;
     
     let err=false;
-    io.emit(Id1+Id2,{arr,err});
-    io.emit(Id2+Id1,{arr,err});}
+    io.emit(Id1+Id2,{Chat,err});
+    io.emit(Id2+Id1,{Chat,err});}
 
   })
 
@@ -88,13 +88,13 @@ io.on("connection",(socket)=>{
 
       let err=false;
       
-      socket.emit(Id1+Id2,{Chat,err});
+      io.emit(Id1+Id2,{Chat,err});
       io.emit(Id2+Id1,{Chat,err});
     }
   } catch (error) {
     let err=true;
     console.log("error on line no 74");
-    socket.emit(Id1+Id2,{err});
+   io.emit(Id1+Id2,{err});
   } 
  })
 
