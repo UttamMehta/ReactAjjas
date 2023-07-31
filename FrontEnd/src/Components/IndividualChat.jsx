@@ -32,12 +32,11 @@ useEffect(()=>{
 
 function send(){
     if(Id1,Id2,Message)
-    socket.emit("chat",{Id1,Id2,Message});
+  {  socket.emit("chat",{Id1,Id2,Message});
+setMessage("");}
     else
-    alert("Some Error");
+    alert("Some Error added in new technology");
 }
-
-
 
 
 console.log(userAuth);
@@ -47,7 +46,7 @@ console.log(userAuth);
     <div>
         <h3>Sender: {userAuth.Id1}</h3>
         <h4>Receiver: {userAuth.Id2}</h4>
-       <input type='text' placeholder='Enter your message' onChange={(e)=>setMessage(e.target.value)}/>
+       <input type='text' placeholder='Enter your message' onChange={(e)=>setMessage(e.target.value)} value={Message}/>
        <button onClick={send}>Send</button>
        <div>
         {arr.length===0?<h4>Not Any Message Yet</h4>:<div>

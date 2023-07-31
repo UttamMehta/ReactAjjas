@@ -5,7 +5,7 @@ import { AuthContext } from "../Auth/AuthContextProvider";
 function Chat() {
     const {userAuth,AddMessageUser}=useContext(AuthContext);
 console.log("hi");
-console.log(userAuth);
+// console.log(userAuth);
   return (
     <div>
     <div>

@@ -6,10 +6,10 @@ export const AuthContext=createContext();
 
 function AuthContextProvider({children}) {
 const [userAuth,setUserAuth]=useState({
-    isAuth:true,
-    Id1:"abc@gmail.com",
+    isAuth:false,
+    Id1:"",
     Id2:"",
-    friend:["xyz@gmail.com","pqr@gmail.com","qwe@gmail.com","lqr@gmail.com"],
+    friend:[],
 })
 
 const loggedin=({Id1,arr})=>{
