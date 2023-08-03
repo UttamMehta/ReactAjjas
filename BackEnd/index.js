@@ -71,7 +71,13 @@ io.on("connection",(socket)=>{
   try {
     let userChat={};
     let Chat=[];
-    if(Id1&&Id2&&Message){
+
+    if(!Id1||!Id2||!Message){
+        let err=true;
+        console.log("error on line no 77");
+       io.emit(Id1+Id2,{err});
+    }
+    else if(Id1&&Id2&&Message){
      
       userChat=await Chart.findOne({$or:[{Id1,Id2},{Id1:Id2,Id2:Id1}]});
       if(userChat===null||Object.keys(userChat).length===0){
@@ -93,7 +99,7 @@ io.on("connection",(socket)=>{
     }
   } catch (error) {
     let err=true;
-    console.log("error on line no 74");
+    console.log("error on line no 102");
    io.emit(Id1+Id2,{err});
   } 
  })
