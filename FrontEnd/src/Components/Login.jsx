@@ -7,7 +7,11 @@ function Login() {
 const [user,setUser]=useState({email:""})
 const {userAuth,loggedin}=useContext(AuthContext);
 
+const socket=io("http://localhost:3035/",{transports:["websocket","polling"]});
 
+// socket.on("hey",(msg)=>{
+//   console.log(msg);
+// })
 
 // const socket = io('');
 

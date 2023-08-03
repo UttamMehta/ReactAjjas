@@ -11,35 +11,28 @@ const {Id1,Id2}=userAuth;
 const socket=io("http://localhost:3035/",{transports:["websocket","polling"]});
 
 useEffect(()=>{
-    socket.emit("show",{Id1,Id2});
-    socket.on(Id1+Id2,(msg)=>{
-        let {err}=msg;
-        console.log(msg);
-    if(err){
-        setArr([]);
-    }
-    else{
-        setArr(msg.Chat);
-        console.log(msg.Chat);
-    }
+socket.emit("Individual",({Id1,Id2}));
+socket.on(Id1+Id2,(msg)=>{
+  const {err,Chat}=msg;
+  console.log(msg);
+  if(err){
     
-    })
-
+  }
+  else{
+    
+    setArr(Chat);
+  }
+})
     return ()=>{
-        // socket.disconnect();
+      
     }
 },[])
 
 function send(){
-    if(Id1,Id2,Message)
-  {  socket.emit("chat",{Id1,Id2,Message});
-setMessage("");}
-    else
-    alert("Some Error added in new technology");
+  socket.emit("chat",({Id1,Id2,Message}));
 }
 
-
-console.log(userAuth);
+// console.log(userAuth);
 // function sendMessage()
 
   return (
