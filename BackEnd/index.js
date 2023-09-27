@@ -13,7 +13,7 @@ const connectDatabase = require("./config/connectDatabase");
 
 
 // const ChartRouter = require("./routes/chart");
-// const AuthRouter = require("./routes/auth");
+const AuthRouter = require("./routes/auth");
 
 const app = express();
 app.all("/", (req, res) => {
@@ -30,7 +30,7 @@ app.get("/hello", (req, res, next) => {
   next();
 });
 
-// app.use("/auth", AuthRouter);
+app.use("/auth", AuthRouter);
 
 // app.use("/chart", ChartRouter);
 
@@ -105,13 +105,6 @@ io.on("connection",(socket)=>{
  })
 
 socket.on("disconnect",()=>{
-console.log("disconnected")
+console.log("disconnected");
 })
 })
-
-
-
-
-
-
-
